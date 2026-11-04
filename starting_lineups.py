@@ -1,4 +1,5 @@
 import base64
+import os
 import requests
 import datetime as dt
 from xml.etree import ElementTree as ET
@@ -6,8 +7,8 @@ from xml.etree import ElementTree as ET
 
 
 pull_games_url = "https://www.mysportsfeeds.com/api/feed/pull/mlb/current/game_startinglineup.xml"
-username = "snohooper"
-password = "VTinACC06"
+username = os.environ.get("MYSPORTSFEEDS_USERNAME", "")
+password = os.environ.get("MYSPORTSFEEDS_PASSWORD", "")
 today_date = dt.date.today().strftime("%Y%m%d")
 
 namespaces = {'gam': 'http://leaguemanager.beacontender.com/plugin/feed/gamestartinglineup',

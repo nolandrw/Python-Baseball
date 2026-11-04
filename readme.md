@@ -1,3 +1,28 @@
+# MLB first-five predictive research
+
+The new research architecture starts with first-five-inning combined run totals,
+with pitcher strikeouts and outs as later extensions.
+
+- [Architecture, data model, temporal features and agents](docs/f5-architecture.md)
+- [Legacy review and missing-script integration contracts](docs/legacy-integration.md)
+- [Delivery sequence and acceptance checks](docs/f5-roadmap.md)
+
+This branch contains a design and tested offline primitives, not a trained model or
+live betting system. No wagers, paid feeds, scheduled scraping or LLM calls.
+
+Run offline checks with Python 3.12+:
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m unittest discover -s tests -v
+```
+
+On macOS/Linux: `PYTHONPATH=src python -m unittest discover -s tests -v`.
+Root scripts and the original description below are legacy. They are not used by
+new CI. Warehouse data and fitted artifacts belong outside Git. The newer Statcast
+and updater scripts were not present and still need integration.
+
+---
 # Daily Baseball Game Statistical Analysis
 Modeling of winning percentages as compared to those provided by Vegas
 

@@ -1,0 +1,10 @@
+mode = "offline_research"
+market = "f5_total"
+prediction_horizons_minutes = [60, 15]
+require_confirmed_lineups = true
+require_verified_starters = true
+max_experiments_per_cycle = 10
+paid_services_enabled = false
+automatic_model_promotion = false
+scheduled_ingestion_enabled = false
+# Declarative design only: orchestration and provider clients are not implemented.
