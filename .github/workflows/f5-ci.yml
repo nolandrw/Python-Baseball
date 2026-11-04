@@ -1,0 +1,25 @@
+name: F5 offline checks
+on:
+  pull_request:
+  push:
+    branches: [master, 'architecture/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: f5-ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  offline-tests:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test research foundation without provider calls
+        env:
+          PYTHONPATH: src
+        run: python -m unittest discover -s tests -v
